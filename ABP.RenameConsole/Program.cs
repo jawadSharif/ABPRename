@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace ABP.RenameConsole
 {
+    // translated from chinese
     class Program
     {
         private static bool isFirstRun = true;
-        //是否创建备份
+        //Whether to create a backup
         private static bool _createBackup = true;
-        //项目src目录
-        private static  string _folder = "";
+        //Project src directory
+        private static string _folder = "";
 
-        //原有项目公司名称
+        //Original project company name
         private static string _companyNamePlaceHolder = "";
-        //原有项目名称
+        //Original project name
         private static string _projectNamePlaceHolder = "";
-        //新项目公司名称
+        //New project company name
         private static string _companyName = "";
-        //新项目名称
+        //New project name
         private static string _projectName = "";
 
         static void Main(string[] args)
@@ -29,12 +26,12 @@ namespace ABP.RenameConsole
             {
                 if (_folder == "")
                 {
-                    Console.WriteLine("项目地址不能为空！，请重新录入！");
+                    Console.WriteLine("Item address cannot be empty!, please re-enter!");
                     getParam();
                 }
                 if (_projectNamePlaceHolder == "" || _projectName == "")
                 {
-                    Console.WriteLine("原有项目名称和新项目名称不能为空，请重新输入");
+                    Console.WriteLine("The original project name and new project name cannot be empty, please re-enter");
                     getParam();
                 }
             }
@@ -43,29 +40,29 @@ namespace ABP.RenameConsole
                 getParam();
             }
 
-            Console.WriteLine("替换中...! 替换完成自动关闭窗口");
+            Console.WriteLine("Replacement...! Replacement completes automatic closing of the window");
             SolutionRenamer app = new SolutionRenamer(_folder, _companyNamePlaceHolder, _projectNamePlaceHolder, _companyName, _projectName);
-            app.CreateBackup = _createBackup;//是否创建备份
+            app.CreateBackup = _createBackup;//Whether to create a backup
             app.Run();
         }
 
 
         public static void getParam()
         {
-            Console.WriteLine("请输入需要ABP项目的src根目录:");
+            Console.WriteLine("Please enter the src root directory of the required ABP project:");
             _folder = Console.ReadLine();
 
-            Console.WriteLine("是否创建备份？(true创建备份；false不创建备份)");
+            Console.WriteLine("Create a backup? (true creates backup; false does not create backup)");
              _createBackup = Convert.ToBoolean(Console.ReadLine());
 
-            Console.WriteLine("请输入原项目的公司名称(如果没有，可以为空):");
+            Console.WriteLine("Please enter the company name of the original project (if not, it can be empty):");
             _companyNamePlaceHolder = Console.ReadLine();
-            Console.WriteLine("请输入原项目的项目名称:");
+            Console.WriteLine("Please enter the project name of the original project:");
             _projectNamePlaceHolder = Console.ReadLine();
 
-            Console.WriteLine("请输入新项目的公司名称(如果没有，可以为空):");
+            Console.WriteLine("Please enter the company name of the new project (if it does not, it can be empty):");
             _companyName = Console.ReadLine();
-            Console.WriteLine("请输入新项目的项目名称:");
+            Console.WriteLine("Please enter the project name of the new project:");
             _projectName = Console.ReadLine();
 
             isFirstRun = false;
