@@ -1,3 +1,3 @@
 # ABPRename
-ABP 项目重命名解决方案
+ABP Rename Utility to change solution, project name and respective namespeces seemlessly 
 
